@@ -1,10 +1,16 @@
-const http = require('http');
+// redirect.ts
 
-const redirectUrl = 'https://vireffy.net';
+// Define the redirect URL
+const redirectUrl = "https://vireffy.net"; // Replace with the URL you want to redirect to
 
-http.createServer((req, res) => {
-  res.writeHead(302, { Location: redirectUrl });
-  res.end();
-}).listen(process.env.PORT || 3000, () => {
-  console.log(`Redirecting all traffic to ${redirectUrl}`);
+// Handle the request
+addEventListener("fetch", (event) => {
+  event.respondWith(
+    new Response(null, {
+      status: 302, // HTTP status for redirection
+      headers: {
+        "Location": redirectUrl, // The URL to redirect to
+      },
+    })
+  );
 });
